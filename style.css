@@ -71,3 +71,26 @@ h2 {
   backdrop-filter: blur(14px);
   box-shadow: 0 8px 30px rgba(5, 12, 30, 0.12);
 }
+
+.btn {
+  font: inherit;
+  font-size: 0.875rem;
+  color: inherit;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.15);
+}
+.btn[aria-pressed="true"],
+.btn.on {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+
