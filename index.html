@@ -10,8 +10,8 @@
 </head>
 <body>
     <div id="bg"></div>
-    <main class="wrap">
-        <header class="bar"></header>
+    <header class="wrap">
+        <header class="bar">
         <b class="logo">☁️ My Weather App</b>
 
         <div class="search" role="search">
@@ -35,6 +35,16 @@
         </div>
 
         <button class="btn" id="theme" aria-label="Toggle theme">🌓</button>
+
+    </header>
+
+    <div class="titlebar">
+        <div class="grow"><h1 id="city">Loading...</h1><p class="muted" id="muted" id="sub"></p></div>
+        <span class="muted" id="stuts" aria-live="polite"></span>
+        <button class="btn" id="fav"> ☆ Save</button>
+        <button class="btn" id="share">🔗 Coppt link</button>
+        <button class="btn" id="refresh">🔄Refresh</button>
+    </div>
 
 
 
