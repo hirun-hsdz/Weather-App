@@ -13,4 +13,13 @@
   --line: rgba(180, 200, 235, 0.14);
 }
 
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  min-height: 100vh;
+}
