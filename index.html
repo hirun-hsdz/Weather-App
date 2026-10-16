@@ -1,84 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Weather App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="bg"></div>
     <main class="wrap">
         <header class="bar">
-        <b class="logo">☁️ My Weather App</b>
-
-        <div class="search" role="search">
-            <input id="q" type="text" placeholder="Search any City" aria-label="Search City" autocomplete="off" role="combox" aria-controls="results">
-            <button class="btn" id="go">Search</button>
-            <ul id="result" role="listbox" class="card" hidden></ul>
+            <b class="logo">☁️ My Weather App</b>
+            <div class="search" role="search">
+                <input id="q" type="text" placeholder="Search any city" aria-label="Search city" autocomplete="off"
+                    role="combobox" aria-expanded="false" aria-controls="results">
+                <button class="btn" id="go">Search</button>
+                <ul id="results" role="listbox" class="card" hidden></ul>
+            </div>
+            <button class="btn" id="geo">⚲ My location</button>
+            <select class="btn" id="favSel" aria-label="Saved cities"></select>
+            <div class="grow"></div>
+            <div class="seg" id="tuSeg" role="group" aria-label="Temperature unit"><button class="btn"
+                    data-v="C">°C</button><button class="btn" data-v="F">°F</button></div>
+            <div class="seg" id="wuSeg" role="group" aria-label="Wind unit"><button class="btn"
+                    data-v="kmh">km/h</button><button class="btn" data-v="mph">mph</button><button class="btn"
+                    data-v="ms">m/s</button></div>
+            <button class="btn" id="theme" aria-label="Toggle theme">🌓</button>
+        </header>
+        <div class="titlebar">
+            <div class="grow">
+                <h1 id="city">Loading…</h1>
+                <p class="muted" id="sub"></p>
+            </div>
+            <span class="muted" id="status" aria-live="polite"></span>
+            <button class="btn" id="fav">☆ Save</button>
+            <button class="btn" id="share">🔗 Copy link</button>
+            <button class="btn" id="refresh">⟳ Refresh</button>
         </div>
-
-        <button class="btn" id="geo">⌖ My Location</button>
-        <select class="btn" id="favSel" aria-label="Saved Cities"></select>
-        <div class="grow"></div>
-        <div class="seg" id="tuSeg" role="group" aria-label="Temperature unit">
-            <button class="btn" data-v="C">°C</button>
-            <button class="btn" data-v="F">°F</button>
+        <div id="error" class="card err" role="alert" hidden><span id="errMsg"></span><button class="btn"
+                id="retry">Retry</button></div>
+        <div id="skeleton" hidden>
+            <div class="skel" style="height:260px"></div>
+            <div class="skel" style="height:150px"></div>
+            <div class="skel" style="height:260px"></div>
         </div>
-
-        <div class="seg" id="wuSeg" role="group" aria-label="Wind Unit">
-            <button class="btn" data-v="kmh">km/h</button>
-            <button class="btn" data-v="mph">mph</button>
-            <button class="btn" data-v="ms">m/s</button>
+        <div id="content" hidden>
+            <section class="card pad" id="current" aria-label="Current weather"></section>
+            <section class="card pad" aria-label="Next 24 hours">
+                <h2>Next 24 hours</h2>
+                <ul id="hourly" class="hours" tabindex="0"></ul>
+            </section>
+            <section aria-label="Highlights">
+                <h2>Today's highlights</h2>
+                <div id="highlights" class="grid"></div>
+            </section>
+            <section class="card pad" aria-label="7-day forecast">
+                <h2>7-day forecast</h2>
+                <ul id="daily" class="days"></ul>
+            </section>
+            <section class="card" aria-label="Map">
+                <div class="pad maphead">
+                    <h2 class="grow">Map</h2><button class="btn" id="radar" aria-pressed="false">Rain
+                        radar</button><button class="btn" id="recenter">◎ Back to city</button>
+                </div>
+                <p class="muted small pad nopt" id="mapNote">Radar by RainViewer (free, no key). Wind overlays need a
+                    keyed provider and are not enabled.</p>
+                <div id="map"></div>
+            </section>
+            <section class="card pad" aria-label="City comparison">
+                <h2>Compare saved cities</h2>
+                <div id="compare" class="scrollx"></div>
+            </section>
         </div>
-
-        <button class="btn" id="theme" aria-label="Toggle theme">🌓</button>
-
-    </header>
-
-    <div class="titlebar">
-        <div class="grow"><h1 id="city">Loading...</h1><p class="muted" id="muted" id="sub"></p></div>
-        <span class="muted" id="stuts" aria-live="polite"></span>
-        <button class="btn" id="fav"> ☆ Save</button>
-        <button class="btn" id="share">🔗 Coppt link</button>
-        <button class="btn" id="refresh">🔄Refresh</button>
-    </div>
-
-    <div id="error" class="card error" role="alert" hidden><span id="errMzg"></span>
-    <button class="btn" id="retry">Retry</button></div>
-
-    <div id="skeleton" hidden><div class="skel" style="height:260px"></div>
-    <div class="skel" style="height:150px"></div>
-    <div class="skel" style="height:260px"></div>
-    </div>
-
-    <div id="content" hidden> 
-
-    <section class="card pad" id="current" aria-label="Current weather"></section> 
-    <section class="card pad" aria-label="Next 24 hours"><h2>Next 24 hours</h2><ul id="hourly" class="hours" tabindex="0"></ul></section> 
-    <section aria-label="Highlights"><h2>Today's highlights</h2><div id="highlights" class="grid"></div></section> 
-    <section class="card pad" aria-label="7-day forecast"><h2>7-day forecast</h2><ul id="daily" class="days"></ul></section>
-
-    <section class="card" aria-label="Map">
-
-        <div class="pad maphead"><h2 class="grow">Map</h2>
-            <button class="btn" id="radar" aria-pressed="false">Rain radar</button>
-            <button class="btn" id="recenter">◎ Back to city</button></div>
-
-              <p class="muted small pad nopt" id="mapNote">Radar by RainViewer (free, no key). Wind overlays need a keyed provider and are not enabled.</p> 
-
-        <div id="map"></div> 
-    </section>   
-    
-    <section class="card pad" aria-label="City comparison"><h2>Compare saved cities</h2><div id="compare" class="scrollx"></div></section> 
-
-  </div> 
-
-  <footer class="muted small">Data: Open-Meteo (CC BY 4.0) · Radar: RainViewer · Map: OpenStreetMap contributors</footer> 
- 
+        <footer class="muted small">Data: Open-Meteo (CC BY 4.0) · Radar: RainViewer · Map: OpenStreetMap contributors
+        </footer>
     </main>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
+
 </html>
