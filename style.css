@@ -242,4 +242,37 @@ select.btn option {
   font-size: 0.9rem;
 }
 
+.hours {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 8px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.hours li {
+  flex: 0 0 80px;
+  text-align: center;
+  background: var(--line);
+  border-radius: 16px;
+  padding: 12px 6px;
+  font-size: 0.85rem;
+  display: grid;
+  gap: 6px;
+}
+
+.hours li.now {
+  background: var(--accent);
+  color: #fff;
+}
+.hours b {
+  font-size: 1.05rem;
+}
+.ic {
+  font-size: 1.6rem;
+}
+
+
+
 
