@@ -273,6 +273,32 @@ select.btn option {
   font-size: 1.6rem;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.tile {
+  padding: 16px;
+}
+.tile .t {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.tile .v {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 6px 0 2px;
+}
+.tile .s {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.wide {
+  grid-column: span 2;
+}
 
 
 
