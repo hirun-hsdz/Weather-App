@@ -143,4 +143,50 @@ select.btn option {
   outline-offset: 2px;
 }
 
+#results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 6px 0 0;
+  padding: 4px;
+  list-style: none;
+  z-index: 1000;
+  background: var(--card);
+  backdrop-filter: blur(20px);
+}
+
+#results li {
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#results li:hover,
+#results li.act {
+  background: var(--line);
+}
+
+#results li.info {
+  cursor: default;
+  color: var(--muted);
+}
+
+.err {
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.err span {
+  flex: 1;
+}
+
+.skel {
+  border-radius: 20px;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, var(--card), var(--line), var(--card));
+  background-size: 200% 100%;
+  animation: sk 1.4s infinite;
+}
+
 
