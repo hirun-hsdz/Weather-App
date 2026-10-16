@@ -189,4 +189,57 @@ select.btn option {
   animation: sk 1.4s infinite;
 }
 
+@keyframes sk {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+#content {
+  display: grid;
+  gap: 16px;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 48px;
+  align-items: center;
+}
+
+.temp {
+  font-size: clamp(6rem, 18vw, 9rem);
+  font-weight: 200;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.temp sup {
+  font-size: 0.4em;
+  font-weight: 300;
+  vertical-align: top;
+  position: relative;
+  top: 0.2em;
+}
+
+.cond {
+  font-size: 1.3rem;
+  margin-top: 8px;
+}
+
+.recs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-width: 240px;
+  display: grid;
+  gap: 8px;
+}
+.recs li {
+  background: var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 0.9rem;
+}
+
 
