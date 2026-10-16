@@ -5,3 +5,12 @@
   --line: rgba(15, 27, 45, 0.12);
   --accent: #4f8cff;
 }
+
+.dark {
+  --ink: #e8eefb;
+  --muted: #9db0cf;
+  --card: rgba(16, 28, 52, 0.58);
+  --line: rgba(180, 200, 235, 0.14);
+}
+
+
