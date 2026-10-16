@@ -93,4 +93,54 @@ h2 {
   border-color: var(--accent);
 }
 
+select.btn option {
+  color: #000;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.bar,
+.titlebar,
+.maphead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.titlebar {
+  align-items: flex-end;
+}
+.logo {
+  font-size: 1.25rem;
+  margin-right: 8px;
+}
+.seg {
+  display: flex;
+  gap: 4px;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 260px;
+  max-width: 460px;
+}
+
+.search input {
+  flex: 1;
+  font: inherit;
+  color: inherit;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  outline-offset: 2px;
+}
+
 
