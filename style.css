@@ -23,3 +23,51 @@ body {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   min-height: 100vh;
 }
+
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  transition: background 1s;
+}
+
+.wrap {
+  max-width: 1150px;
+  margin: auto;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 0.8rem;
+}
+.grow {
+  flex: 1;
+}
+.pad {
+  padding: 20px;
+}
+.nopt {
+  padding-top: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(5, 12, 30, 0.12);
+}
