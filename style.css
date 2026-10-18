@@ -357,3 +357,46 @@ select.btn option {
   color: var(--muted);
 }
 
+#map {
+  height: 380px;
+  border-radius: 0 0 20px 20px;
+}
+.scrollx {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+th {
+  color: var(--muted);
+  font-weight: 400;
+}
+td,
+th {
+  padding: 8px 4px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 600px) {
+  .wide {
+    grid-column: span 1;
+  }
+  .days .l,
+  .days .r {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
